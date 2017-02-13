@@ -8,7 +8,6 @@ import IntlWrapper from './modules/Intl/IntlWrapper';
 
 // import './App.css';
 import Article from './components/article'
-import Newarti from './components/Newarti'
 import Login from './login/login'
 import Butt from './components/button.svg'
 import Back from './components/back.svg'
@@ -24,8 +23,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 'article',
-      result: true,
       auth: false
     };
   }
@@ -36,20 +33,7 @@ class App extends Component {
     });
   }
 
-  changepage(){
-    if ( this.state.page === 'write') {
-      this.setState({
-        page: 'article',
-        result: true
-      })
-    } else if ( this.state.page === 'article' ) {
-      this.setState({
-        page: 'write',
-        result: false
-      })
-    }
-    
-  }
+
 
   render() {
     return (
@@ -58,13 +42,13 @@ class App extends Component {
         <div className="App">
         <header>
         <div className="App-header">
-        </div>
         <button>Broadcast</button>
         <button>Room</button>
+        </div>
         </header>
-        {this.state.result && <Article changepage={this.changepage.bind(this)} />}
-        {!this.state.result && <Newarti changepage={this.changepage.bind(this)} />} 
+        {<Article />}
         <Broadcast></Broadcast>
+
         </div> 
       }
       { !this.state.auth && <Login auth={this.changeauth.bind(this)}/> }
