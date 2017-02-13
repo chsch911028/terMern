@@ -13,6 +13,7 @@ const store = configureStore(window.__INITIAL_STATE__);
 const mountApp = document.getElementById('root');
 $("body").append($('<script src="https://code.jquery.com/jquery-1.12.4.min.js">')); 
 $("body").append($('<script src="https://service.iamport.kr/js/iamport.payment-1.1.4.js">')); 
+
 render(
   <AppContainer>
     <App store={store} />

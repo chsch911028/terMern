@@ -11,8 +11,15 @@ import config from '../webpack.config.dev';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
+// socket.io
+import SocketIo from 'socket.io';
+
 // Initialize the Express App
+
 const app = new Express();
+var http = require('http').Server(app);
+var io = SocketIo(http);
+
 
 // Run Webpack dev server in development mode
 if (process.env.NODE_ENV === 'development') {
@@ -57,6 +64,8 @@ app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist')));
 app.use('/api', posts);
 
+
+
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
   const head = Helmet.rewind();
@@ -78,6 +87,10 @@ const renderFullPage = (html, initialState) => {
         ${process.env.NODE_ENV === 'production' ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
         <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+              var socket = io();
+        </script>
       </head>
       <body>
         <div id="root">${html}</div>
@@ -140,7 +153,8 @@ app.use((req, res, next) => {
 });
 
 // start app
-app.listen(serverConfig.port, (error) => {
+const socketEvents = require('./socketEvents')(io);
+const server = http.listen(serverConfig.port, (error) => {
   if (!error) {
     console.log(`MERN is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
   }

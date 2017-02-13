@@ -14,7 +14,7 @@ import Login from './login/login'
 import Butt from './components/button.svg'
 import Back from './components/back.svg'
 import Broadcast from './components/Broadcast'
-
+import Message from './components/Message'
 // Import Routes
 // import routes from './routes';
 
@@ -50,6 +50,7 @@ class App extends Component {
         </header>
         {<Article />}
         <Broadcast></Broadcast>
+        <Message></Message>
         <div>
         <Kakao kakaopay={kakaopay} />
         </div>
