@@ -37,99 +37,13 @@ export class App extends Component {
             console.log("Video capture error: ", error.code);
     });
   }
+
   componentDidMount() {
     this.setState({isMounted: true}); // eslint-disable-line
 
 
-   // start camera!
-
-    // var myConstraints = { audio: true, video: true };
-    // navigator.mediaDevices.getUserMedia(myConstraints).then(function(mediaStream) {
-    //    use the stream 
-    //   console.log('done')
-    // }).catch(function(err) {
-    //   /* handle the error */
-    //   console.log('error!')
-    // });
-  var videoStream = null;
-      var video = document.getElementById("video");
-
-      // Test browser support
-      window.navigator = window.navigator || {};
-      navigator.getUserMedia = navigator.getUserMedia       ||
-                               navigator.webkitGetUserMedia ||
-                               navigator.mozGetUserMedia    ||
-                               null;
-
-      if (navigator.getUserMedia === null) {
-        document.getElementById('gum-unsupported').classList.remove('hidden');
-        document.getElementById('button-play-gum').setAttribute('disabled', 'disabled');
-        document.getElementById('button-stop-gum').setAttribute('disabled', 'disabled');
-      } else {
-        // Opera <= 12.16 accepts the direct stream.
-        // More on this here: http://dev.opera.com/articles/view/playing-with-html5-video-and-getusermedia-support/
-        var createSrc = window.URL ? window.URL.createObjectURL : function(stream) {return stream;};
-
-        // Opera <= 12.16 support video only.
-        var audioContext = window.AudioContext       ||
-                           window.webkitAudioContext ||
-                           null;
-        if (audioContext === null) {
-          document.getElementById('gum-partially-supported').classList.remove('hidden');
-        }
-
-        document.getElementById('button-play-gum').addEventListener('click', function() {
-          // Capture user's audio and video source
-          console.log('asd')
-          navigator.getUserMedia({
-            video: true,
-            audio: true
-          },
-          function(stream) {
-            videoStream = stream;
-            // Stream the data
-            video.src = createSrc(stream);
-            video.play();
-          },
-          function(error) {
-            console.log("Video capture error: ", error.code);
-          });
-        });
-        document.getElementById('button-stop-gum').addEventListener('click', function() {
-          // Pause the video
-          video.pause();
-          // Stop the stream
-          videoStream.stop();
-        });
-      }
-
-    // if (hasGetUserMedia()) {
-    //   // Good to go!
-    //   console.log(navigator.getUserMedia({video: {
-    //     mandatory: {
-    //       maxWidth: 640,
-    //       maxHeight: 360
-    //     }
-    //   }, audio: true
-    //     },
-    //     function(localMediaStream) {
-    //       var video = document.querySelector('video');
-    //       video.src = window.URL.createObjectURL(localMediaStream);
-
-    //       // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
-    //       // See crbug.com/110938.
-    //       video.onloadedmetadata = function(e) {
-    //         // Ready to go. Do some stuff.
-    //       }
-    //   },errorCallback))
-    // } else {
-    //   alert('getUserMedia() is not supported in your browser');
-    // }
-
-
   }
 
-  //end camera
 
   toggleAddPostSection = () => {
     this.props.dispatch(toggleAddPost());

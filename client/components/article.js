@@ -30,12 +30,15 @@ class Article extends Component {
 	  func(message)
 	  return result
 	}
+   
     
   
 	render() {
 		return (
 				<div>
+
 				{this.Allarticle()}
+				
 				</div> 
 		)
 	}
