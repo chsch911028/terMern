@@ -3,10 +3,6 @@
  */
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
-import IntlWrapper from './modules/Intl/IntlWrapper';
-
-// import './App.css';
 import Article from './components/article'
 import Kakao from './components/Kakao'
 import kakaopay from './lib/kakaopay'
@@ -14,7 +10,8 @@ import Login from './login/login'
 import Butt from './components/button.svg'
 import Back from './components/back.svg'
 import Broadcast from './components/Broadcast'
-
+import { Router, browserHistory } from 'react-router';
+// import './App.css';
 // Import Routes
 // import routes from './routes';
 

@@ -49,7 +49,7 @@ class Login extends Component {
 		<div className="grad"></div>
 		<div>
 			<div className="header">
-				<div>Day <span>Rock</span></div>
+				<div>Shop <span>Ter</span></div>
 			</div>
 			<div className="login">
 					<input type="text" onChange={(e)=>{this.changename.bind(this)(e)}} placeholder="username" name="user" /><br />
