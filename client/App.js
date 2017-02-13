@@ -39,6 +39,7 @@ class App extends Component {
 
   render() {
     return (
+      <Provider store={this.props.store}>
       <div>
       { this.state.auth && 
         <div className="App">
@@ -58,6 +59,7 @@ class App extends Component {
       { !this.state.auth && <Login auth={this.changeauth.bind(this)}/> }
       
       </div>
+      </Provider>
     );
   }
 }

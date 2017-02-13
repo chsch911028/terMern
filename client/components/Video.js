@@ -47,4 +47,9 @@ class Video extends Component {
 	}
 }
 
+const Video = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Video)
+
 export default Video
