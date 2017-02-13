@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Button from 'muicss/lib/react/button';
+
 
 class broadcast extends Component {
 	constructor(props){
@@ -39,13 +41,14 @@ class broadcast extends Component {
 	}
 
   render() {
+  	let style = {backgroundColor:'#fdd835'};
     return (
     	<div>
           	THIS IS VIDEO
 			<video id="video" autoPlay="true" controls="true"></video>
 			<div className="buttons-wrapper">
-				<button id="button-play-gum" className="button-demo" onClick={this.startVideo} href="#">Play Video</button>
-				<button id="button-stop-gum" className="button-demo" onClick={this.stopVideo}href="#">Stop Video</button>
+				<Button variant="raised" style={style} id="button-play-gum" className="button-demo" onClick={this.startVideo} href="#">Play Video</Button>
+				<Button variant="raised" style={style} id="button-stop-gum" className="button-demo" onClick={this.stopVideo}href="#">Stop Video</Button>
 			</div>
 			<span id="gum-unsupported" className="hidden">API not supported</span>
 			<span id="gum-partially-supported" className="hidden">API partially supported (video only)</span>

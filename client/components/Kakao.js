@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Button from 'muicss/lib/react/button';
+
 
 class kaKao extends React.Component {
 		constructor(props) {
@@ -13,9 +15,10 @@ class kaKao extends React.Component {
 
 
 		render(){
+			let style = {backgroundColor:'#fdd835'};
 			return (
 					<div>
-							<button onClick={this.props.kakaopay}>Buy now with KAKAO PAY!!</button>
+							<Button variant='raised' style={style} onClick={this.props.kakaopay}>Buy now with KAKAO PAY!!</Button>
 					</div>
 			);		
 		}

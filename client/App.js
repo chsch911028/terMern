@@ -12,6 +12,13 @@ import Back from './components/back.svg'
 import Broadcast from './components/Broadcast'
 import { Router, browserHistory } from 'react-router';
 // import './App.css';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import AppBar from 'material-ui/AppBar';
+import Button from 'muicss/lib/react/button';
+
 // Import Routes
 // import routes from './routes';
 
@@ -32,9 +39,11 @@ class App extends Component {
     });
   }
 
+  
 
 
   render() {
+    let style = {backgroundColor:'#fdd835'};
     return (
       <Provider store={this.props.store}>
       <div>
@@ -42,9 +51,17 @@ class App extends Component {
         <div className="App">
         <header>
         <div className="App-header">
-        <button>Broadcast</button>
-        <button>Room</button>
+        
+        <Button variant="raised" style={style}>Broadcast</Button>
+        <Button variant="raised" style={style}>Room</Button>
         </div>
+        <MuiThemeProvider>
+            <AppBar
+              title="TER"
+              iconClassNameRight="muidocs-icon-navigation-expand-more"
+              style={{'backgroundColor':'#fdd835'}}
+            />
+        </MuiThemeProvider>
         </header>
         {<Article />}
         <Broadcast></Broadcast>
@@ -59,6 +76,7 @@ class App extends Component {
       </Provider>
     );
   }
+
 }
 
 
