@@ -7,12 +7,8 @@ import Article from './components/article'
 import Kakao from './components/Kakao'
 import kakaopay from './lib/kakaopay'
 import Login from './login/login'
-import Butt from './components/button.svg'
-import Back from './components/back.svg'
 import Broadcast from './components/Broadcast'
 import { Router, browserHistory } from 'react-router';
-// import './App.css';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -21,7 +17,7 @@ import Button from 'muicss/lib/react/button';
 
 // Import Routes
 // import routes from './routes';
-
+// import './App.css';
 // Base stylesheet
 require('./App.css');
 
