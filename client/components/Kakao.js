@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-class KaKao extends React.Component {
+class kaKao extends React.Component {
 		constructor(props) {
 			super(props);
 			
@@ -19,6 +20,16 @@ class KaKao extends React.Component {
 			);		
 		}
 }
+
+let mapStateToProps = function(state){
+	return {
+		videoreducer: state.videoreducer
+	}
+}
+
+const KaKao = connect(
+  mapStateToProps
+)(kaKao)
 
 
 export default KaKao;
