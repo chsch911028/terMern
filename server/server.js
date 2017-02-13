@@ -58,7 +58,7 @@ app.use(Express.static(path.resolve(__dirname, '../dist')));
 app.use('/api', posts);
 
 // Render Initial HTML
-const renderFullPage = (html, initialState) => {
+const renderFullPage = () => {
   const head = Helmet.rewind();
 
   // Import Manifests
@@ -80,9 +80,8 @@ const renderFullPage = (html, initialState) => {
         <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
       </head>
       <body>
-        <div id="root">${html}</div>
+        <div id="root"></div>
         <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
           ${process.env.NODE_ENV === 'production' ?
           `//<![CDATA[
           window.webpackManifest = ${JSON.stringify(chunkManifest)};
@@ -104,39 +103,10 @@ const renderError = err => {
 
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res, next) => {
-  match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
-    if (err) {
-      return res.status(500).end(renderError(err));
-    }
-
-    if (redirectLocation) {
-      return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-    }
-
-    if (!renderProps) {
-      return next();
-    }
-
-    const store = configureStore();
-
-    return fetchComponentData(store, renderProps.components, renderProps.params)
-      .then(() => {
-        const initialView = renderToString(
-          <Provider store={store}>
-            <IntlWrapper>
-              <RouterContext {...renderProps} />
-            </IntlWrapper>
-          </Provider>
-        );
-        const finalState = store.getState();
-
-        res
-          .set('Content-Type', 'text/html')
-          .status(200)
-          .end(renderFullPage(initialView, finalState));
-      })
-      .catch((error) => next(error));
-  });
+  res
+    .set('Content-Type', 'text/html')
+    .status(200)
+    .end(renderFullPage());
 });
 
 // start app
