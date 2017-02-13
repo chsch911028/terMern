@@ -8,6 +8,8 @@ import IntlWrapper from './modules/Intl/IntlWrapper';
 
 // import './App.css';
 import Article from './components/article'
+import Kakao from './components/Kakao'
+import kakaopay from './lib/kakaopay'
 import Login from './login/login'
 import Butt from './components/button.svg'
 import Back from './components/back.svg'
@@ -52,6 +54,9 @@ class App extends Component {
         </div> 
       }
       { !this.state.auth && <Login auth={this.changeauth.bind(this)}/> }
+      <div>
+        <Kakao kakaopay={kakaopay} />
+      </div>
       </div>
     );
   }
