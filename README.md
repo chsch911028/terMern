@@ -16,8 +16,7 @@
 > 사용법
 
 ```
-  - Front-end : npm start
-  
+  Front-end : npm start
 ```
 
 ## 요구 사항
@@ -29,9 +28,6 @@
 - React
 - ES6
 - Babel
-- Yeoman
-- Karma
-- Grunt & Gulp
 - CSS3
 - HTML5
 - Jquery
@@ -46,11 +42,11 @@
 npm install
 ```
 
-### 로드맵
-
-프로젝트 로드맵보기 [여기](LINK_TO_PROJECT_ISSUES)
-
-
 ## 기여
 
 기여 가이드 라인은 [CONTRIBUTING.md](CONTRIBUTING.md)를 참조하십시오.
+
+
+## MERN Starter
+
+MERN Starter 가이드 라인은 [MERN_README.md](README_original.md)를 참조하십시오.
