@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
-class Broadcast extends Component {
+class broadcast extends Component {
 	constructor(props){
 		super(props);
 		// this.state ={
@@ -53,8 +54,14 @@ class Broadcast extends Component {
   }
 }
 
-// Broadcast.propTypes = propTypes = {
+let mapStateToProps = function(state){
+	return {
+		videoreducer: state.videoreducer
+	}
+}
 
-// };
+const Broadcast = connect(
+  mapStateToProps
+)(broadcast)
 
 export default Broadcast;
