@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 var kakaopay = () => {
   var IMP = window.IMP;
 
