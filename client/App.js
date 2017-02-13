@@ -8,7 +8,12 @@ import IntlWrapper from './modules/Intl/IntlWrapper';
 
 // import './App.css';
 import Article from './components/article'
+import Kakao from './components/Kakao'
+import kakaopay from './lib/kakaopay'
 import Login from './login/login'
+import Butt from './components/button.svg'
+import Back from './components/back.svg'
+import Broadcast from './components/Broadcast'
 
 // Import Routes
 // import routes from './routes';
@@ -34,22 +39,25 @@ class App extends Component {
 
   render() {
     return (
-      <Provider store={this.props.store}>
-        <div>
-        { this.state.auth && 
-          <div className="App">
-            <header>
-              <div className="App-header">
-                <button>Broadcast</button>
-                <button>Room</button>
-              </div>
-            </header>
-            <Article />
-          </div> 
-        }
-        { !this.state.auth && <Login auth={this.changeauth.bind(this)}/> }
+      <div>
+      { this.state.auth && 
+        <div className="App">
+        <header>
+        <div className="App-header">
+        <button>Broadcast</button>
+        <button>Room</button>
         </div>
-      </Provider>
+        </header>
+        {<Article />}
+        <Broadcast></Broadcast>
+        <div>
+        <Kakao kakaopay={kakaopay} />
+        </div>
+        </div> 
+      }
+      { !this.state.auth && <Login auth={this.changeauth.bind(this)}/> }
+      
+      </div>
     );
   }
 }
