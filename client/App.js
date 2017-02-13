@@ -9,6 +9,9 @@ import IntlWrapper from './modules/Intl/IntlWrapper';
 // import './App.css';
 import Article from './components/article'
 import Login from './login/login'
+import Butt from './components/button.svg'
+import Back from './components/back.svg'
+import Broadcast from './components/Broadcast'
 
 // Import Routes
 // import routes from './routes';
@@ -44,6 +47,8 @@ class App extends Component {
         </div>
         </header>
         {<Article />}
+        <Broadcast></Broadcast>
+
         </div> 
       }
       { !this.state.auth && <Login auth={this.changeauth.bind(this)}/> }

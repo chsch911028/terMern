@@ -19,10 +19,31 @@ export class App extends Component {
     super(props);
     this.state = { isMounted: false };
   }
+  handleClick(){
+     var videoStream = null;
+     var createSrc = window.URL ? window.URL.createObjectURL : function(stream) {return stream;};
+     var video = document.getElementById("video");
+     navigator.getUserMedia({
+            video: true,
+            audio: true
+          },
+          function(stream) {
+            videoStream = stream;
+            // Stream the data
+            video.src = createSrc(stream);
+            video.play();
+          },
+          function(error) {
+            console.log("Video capture error: ", error.code);
+    });
+  }
 
   componentDidMount() {
     this.setState({isMounted: true}); // eslint-disable-line
+
+
   }
+
 
   toggleAddPostSection = () => {
     this.props.dispatch(toggleAddPost());
@@ -48,11 +69,22 @@ export class App extends Component {
               },
             ]}
           />
+
           <Header
             switchLanguage={lang => this.props.dispatch(switchLanguage(lang))}
             intl={this.props.intl}
             toggleAddPost={this.toggleAddPostSection}
           />
+          <div>
+          THIS IS VIDEO
+            <video id="video" autoPlay="true" controls="true"></video>
+            <div className="buttons-wrapper">
+              <button id="button-play-gum" className="button-demo" onClick={this.handleClick} href="#">Play demo</button>
+              <button id="button-stop-gum" className="button-demo" href="#">Stop demo</button>
+            </div>
+            <span id="gum-unsupported" className="hidden">API not supported</span>
+            <span id="gum-partially-supported" className="hidden">API partially supported (video only)</span>
+          </div>
           <div className={styles.container}>
             {this.props.children}
           </div>
