@@ -3,19 +3,14 @@
  */
 import { combineReducers } from 'redux';
 
-const initstate = {
-	videostream: null,
-	video: null
-};
-
-function videoreducer(state = initstate, action){
-	switch (action.type) {
-		default:
-			return state
-	}
-}
+// Import Reducers
+import app from './modules/App/AppReducer';
+import posts from './modules/Post/PostReducer';
+import intl from './modules/Intl/IntlReducer';
 
 // Combine all reducers into one root reducer
 export default combineReducers({
-  videoreducer
+  app,
+  posts,
+  intl,
 });
