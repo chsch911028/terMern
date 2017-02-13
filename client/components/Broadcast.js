@@ -37,7 +37,6 @@ class broadcast extends Component {
 		// has to stop video by making an action to remove videoStream at handleClick
 
 
-
 	}
 
   render() {

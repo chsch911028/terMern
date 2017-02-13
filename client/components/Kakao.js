@@ -6,7 +6,7 @@ import Button from 'muicss/lib/react/button';
 class kaKao extends React.Component {
 		constructor(props) {
 			super(props);
-			
+			console.log("Redux store에 저장되어 있는 것들", this.props)
 		}
 
 		handleClick(){
@@ -19,6 +19,7 @@ class kaKao extends React.Component {
 			return (
 					<div>
 							<Button variant='raised' style={style} onClick={this.props.kakaopay}>Buy now with KAKAO PAY!!</Button>
+							
 					</div>
 			);		
 		}
@@ -26,7 +27,8 @@ class kaKao extends React.Component {
 
 let mapStateToProps = function(state){
 	return {
-		videoreducer: state.videoreducer
+		videoreducer: state.videoreducer,
+		token: state.Auth.token
 	}
 }
 
