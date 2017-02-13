@@ -50,13 +50,13 @@ class App extends Component {
         </header>
         {<Article />}
         <Broadcast></Broadcast>
-
+        <div>
+        <Kakao kakaopay={kakaopay} />
+        </div>
         </div> 
       }
       { !this.state.auth && <Login auth={this.changeauth.bind(this)}/> }
-      <div>
-        <Kakao kakaopay={kakaopay} />
-      </div>
+      
       </div>
     );
   }
