@@ -13,9 +13,9 @@ Room버튼을 클릭하면, 현재 서버에서 실시간으로 방송중인 홈
 
 ## 팀
 
-   - __Product Owner__ : Mungyu Lee
-   - __Scrum Master__ : Duckyeon Kim
-   - __ 개발 팀 멤버 __ : Siwoo Lee, Junghyun Ahn
+   - __Product Owner__ : 손효정
+   - __Scrum Master__ : 최성찬
+   - __ 개발 팀 멤버 __ : 이종익, 윤송이
 
 
 ## 사용법
