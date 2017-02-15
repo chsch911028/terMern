@@ -44,18 +44,18 @@ import dummyData from './dummyData';
 import serverConfig from './config';
 
 // Set native promises as mongoose promise
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 
-// MongoDB Connection
-mongoose.connect(serverConfig.mongoURL, (error) => {
-  if (error) {
-    console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
-    throw error;
-  }
+// // MongoDB Connection
+// mongoose.connect(serverConfig.mongoURL, (error) => {
+//   if (error) {
+//     console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
+//     throw error;
+//   }
 
-  // feed some dummy data in DB.
-  dummyData();
-});
+//   // feed some dummy data in DB.
+//   dummyData();
+// });
 
 // Apply body Parser and server public assets and routes
 app.use(compression());
@@ -93,14 +93,7 @@ const renderFullPage = (html, initialState) => {
         </script>
       </head>
       <body>
-        <div id="root">${html}</div>
-        <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
-          ${process.env.NODE_ENV === 'production' ?
-          `//<![CDATA[
-          window.webpackManifest = ${JSON.stringify(chunkManifest)};
-          //]]>` : ''}
-        </script>
+        <div id="root"></div>
         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/vendor.js'] : '/vendor.js'}'></script>
         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/app.js'] : '/app.js'}'></script>
       </body>

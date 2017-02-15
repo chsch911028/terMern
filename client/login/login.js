@@ -5,6 +5,7 @@ import {user} from '../Components/data'
 import { connect } from 'react-redux';
 import { detect } from 'actions';
 
+
 class login extends Component {
 
   constructor(props) {
@@ -33,16 +34,22 @@ class login extends Component {
           username: this.state.username,
           password: this.state.password 
     }
-    axios.post('http://localhost:8000/api/signin', us)
-      .then(function(argu){
+    //dataserver가 열려 있을 경우 아래 코드 해제
+    // axios.post('http://localhost:8000/api/signin', us)
+    //   .then(function(argu){
        
-        console.log(that.props)
-        that.props.detect(argu.data.token)
-        that.props.auth()
-      })
-      .catch(function(error){
-        console.log(error)
-      })
+    //     console.log(that.props)
+    //     that.props.detect(argu.data.token)
+    //     that.props.auth()
+    //   })
+    //   .catch(function(error){
+    //     console.log(error)
+    //   })
+
+    //dataserver가 열려 있지 않을 경우를 대비한 test용 코드
+
+    that.props.detect("test에요!")
+    that.props.auth()
 
 
 
