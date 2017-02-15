@@ -8,6 +8,7 @@ import Kakao from './components/Kakao'
 import kakaopay from './lib/kakaopay'
 import Login from './login/login'
 import Broadcast from './components/Broadcast'
+import Message from './components/Message'
 import { Router, browserHistory } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
@@ -61,6 +62,7 @@ class App extends Component {
         </header>
         {<Article />}
         <Broadcast></Broadcast>
+        <Message></Message>
         <div>
         <Kakao kakaopay={kakaopay} />
         </div>
