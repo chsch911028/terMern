@@ -3,21 +3,22 @@
  */
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
-import IntlWrapper from './modules/Intl/IntlWrapper';
-
-// import './App.css';
 import Article from './components/article'
 import Kakao from './components/Kakao'
 import kakaopay from './lib/kakaopay'
 import Login from './login/login'
-import Butt from './components/button.svg'
-import Back from './components/back.svg'
 import Broadcast from './components/Broadcast'
 import Message from './components/Message'
+import { Router, browserHistory } from 'react-router';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import AppBar from 'material-ui/AppBar';
+import Button from 'muicss/lib/react/button';
+
 // Import Routes
 // import routes from './routes';
-
+// import './App.css';
 // Base stylesheet
 require('./App.css');
 
@@ -35,18 +36,29 @@ class App extends Component {
     });
   }
 
+  
 
 
   render() {
+    let style = {backgroundColor:'#fdd835'};
     return (
+      <Provider store={this.props.store}>
       <div>
       { this.state.auth && 
         <div className="App">
         <header>
         <div className="App-header">
-        <button>Broadcast</button>
-        <button>Room</button>
+        
+        <Button variant="raised" style={style}>Broadcast</Button>
+        <Button variant="raised" style={style}>Room</Button>
         </div>
+        <MuiThemeProvider>
+            <AppBar
+              title="TER"
+              iconClassNameRight="muidocs-icon-navigation-expand-more"
+              style={{'backgroundColor':'#fdd835'}}
+            />
+        </MuiThemeProvider>
         </header>
         {<Article />}
         <Broadcast></Broadcast>
@@ -59,8 +71,10 @@ class App extends Component {
       { !this.state.auth && <Login auth={this.changeauth.bind(this)}/> }
       
       </div>
+      </Provider>
     );
   }
+
 }
 
 

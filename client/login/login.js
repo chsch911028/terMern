@@ -1,9 +1,11 @@
-
-
 import React, { Component } from 'react';
 import './css/style.css'
+import axios from 'axios';
 import {user} from '../Components/data'
-class Login extends Component {
+import { connect } from 'react-redux';
+import { detect } from 'actions';
+
+class login extends Component {
 
   constructor(props) {
   	super(props);
@@ -26,19 +28,25 @@ class Login extends Component {
   }
 
   detectpassword(){
-  	var that = this
-  	var TF = false
-  	user.forEach(function(obj){
-  
-  		if (obj.username === that.state.username && obj.password === that.state.password) {
-  			TF = true
-  		}
-  	})
-  	if (TF) {
-  		this.props.auth()
-  	} else {
-  		alert("죄송합니다. 아직 저희의 고객이 아니시네요.")
-  	}
+    var that = this
+    var us = { 
+          username: this.state.username,
+          password: this.state.password 
+    }
+    axios.post('http://localhost:8000/api/signin', us)
+      .then(function(argu){
+       
+        console.log(that.props)
+        that.props.detect(argu.data.token)
+        that.props.auth()
+      })
+      .catch(function(error){
+        console.log(error)
+      })
+
+
+
+
   }
 
   render(){
@@ -49,7 +57,7 @@ class Login extends Component {
 		<div className="grad"></div>
 		<div>
 			<div className="header">
-				<div>Day <span>Rock</span></div>
+				<div>Shop <span>Ter</span></div>
 			</div>
 			<div className="login">
 					<input type="text" onChange={(e)=>{this.changename.bind(this)(e)}} placeholder="username" name="user" /><br />
@@ -63,6 +71,23 @@ class Login extends Component {
   }
 
 }
+
+let mapStateToProps = function(state){
+  return {
+    videoreducer: state.videoreducer
+  }
+}
+
+let mapDispatchToProps = function(dispatch){
+    return {
+        detect: (token) => dispatch(detect(token))
+    }
+}
+
+const Login = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(login)
 
 export default Login
 

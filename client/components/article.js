@@ -18,11 +18,6 @@ class Article extends Component {
 	  		var one = <article key={index}>
 	  					<h1 title=""><span>{mes.date[0]}</span><span>{mes.date[1]}</span><span>{mes.date[2]}</span></h1>
 	  				    <div className='content'><p>{mes.title}</p><p>{mes.contents}</p></div>
-	  				    <div className="video-player">
-    					  <div className="embed-responsive embed-responsive-16by9 youtube">
-							<iframe width="560" height="315" src={mes.youtube}></iframe>
-							</div>
-    					</div>
 	  				   </article>
 	  		result.push(one)
 	  	})

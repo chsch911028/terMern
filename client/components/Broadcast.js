@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import Button from 'muicss/lib/react/button';
 
-class Broadcast extends Component {
+
+class broadcast extends Component {
 	constructor(props){
 		super(props);
 		// this.state ={
@@ -34,17 +37,17 @@ class Broadcast extends Component {
 		// has to stop video by making an action to remove videoStream at handleClick
 
 
-
 	}
 
   render() {
+  	let style = {backgroundColor:'#fdd835'};
     return (
     	<div>
           	THIS IS VIDEO
 			<video id="video" autoPlay="true" controls="true"></video>
 			<div className="buttons-wrapper">
-				<button id="button-play-gum" className="button-demo" onClick={this.startVideo} href="#">Play Video</button>
-				<button id="button-stop-gum" className="button-demo" onClick={this.stopVideo}href="#">Stop Video</button>
+				<Button variant="raised" style={style} id="button-play-gum" className="button-demo" onClick={this.startVideo} href="#">Play Video</Button>
+				<Button variant="raised" style={style} id="button-stop-gum" className="button-demo" onClick={this.stopVideo}href="#">Stop Video</Button>
 			</div>
 			<span id="gum-unsupported" className="hidden">API not supported</span>
 			<span id="gum-partially-supported" className="hidden">API partially supported (video only)</span>
@@ -53,8 +56,14 @@ class Broadcast extends Component {
   }
 }
 
-// Broadcast.propTypes = propTypes = {
+let mapStateToProps = function(state){
+	return {
+		videoreducer: state.videoreducer
+	}
+}
 
-// };
+const Broadcast = connect(
+  mapStateToProps
+)(broadcast)
 
 export default Broadcast;
